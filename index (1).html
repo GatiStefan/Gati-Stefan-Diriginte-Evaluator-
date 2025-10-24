@@ -205,34 +205,66 @@
   </footer>
 
   <script>
-    // RO/HU dictionary
-    const dictHU = {
-      kicker: "Szatmárnémeti · Polgári, ipari és mezőgazdasági projektek",
-      title: "Műszaki ellenőrzés, értékbecslés és villamos kivitelezés – professzionálisan, gyorsan, dokumentáltan.",
-      lead: "Teljes körű tanácsadás a dokumentáció ellenőrzésétől az átvételig, ANEVAR értékbecslés (ingatlan és ingóság) és fotovoltaikus / villamos megoldások (ANRE). Rugalmas időpontok, kiszállás a megyében.",
-      cta1: "Időpont egyeztetés",
-      cta2: "Írj WhatsApp-on",
-      cta3: "Szolgáltatások",
-      s1_title:"Műszaki ellenőrzés (dirigenție)", s1_desc:"Kivitelezés követése, minőségellenőrzés, munkanapló, átvételi dokumentumok.", s1_b1:"Lakó-, ipari, mezőgazdasági", s1_b2:"Minőségellenőrzési terv, jegyzőkönyvek", s1_b3:"Tervező / kivitelező egyeztetés",
-      s2_title:"ANEVAR értékbecslés", s2_desc:"Ingatlan és ingóság értékelések – banki, könyvelési vagy adásvételi célra.", s2_b1:"Piaci, hozam, költség megközelítés", s2_b2:"Fotódokumentáció, szemle, teljes dosszié", s2_b3:"Digitális átadás (aláírt PDF)",
-      s3_title:"Villamos / Fotovoltaikus", s3_desc:"Tanácsadás és ellenőrzés: elosztótáblák, körök, üzembe helyezés, PV méretezés, engedélyek.", s3_b1:"ANRE jogosultság szerint", s3_b2:"Műszaki audit / megfelelőség", s3_b3:"Fogyasztásoptimizálás / prosumer",
-      cred_title:"Akkreditációk & kompetenciák", cred_b1:"Műszaki ellenőr – C, I, A", cred_b2:"ANEVAR értékelő", cred_b3:"ANRE villanyszerelő (IIA/IIB)", cred_b4:"Turisztikai menedzser", cred_p:"Igazolványok/engedélyek kérésre. Hatályos szabványok és előírások szerint.",
-      zone_title:"Szolgáltatási terület", zone_desc:"Szatmárnémeti és megye települései. Gyors kiszállás, rugalmas időpont.",
-      faq_title:"Gyakori kérdések", q1:"Mennyi idő alatt kapok ajánlatot?", a1:"Általában 24–48 órán belül, ha megkapom az alapadatokat (tervek, leírás, helyszín).", q2:"Szombaton is dolgozik?", a2:"Igen, megyei kiszállás előzetes egyeztetéssel.", q3:"Számlát állít ki?", a3:"Igen. Fizetés utalással vagy készpénzben, jogszabály szerint.",
-      contact_title:"Kapcsolat", form_title:"Üzenet küldése", send:"Küldés"
-    };
-    const qs = s=>document.querySelector(s); const qsa = s=>[...document.querySelectorAll(s)];
-    const applyLang = (isHU=false)=>{
-      qsa('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(isHU && dictHU[key]) el.textContent = dictHU[key];
-        if(!isHU && dictHU[key]) el.textContent = el.getAttribute('data-i18n-orig') || el.textContent;
-      });
-      qsa('[data-lang]').forEach(b=>b.style.opacity = (b.dataset.lang===(isHU?'hu':'ro'))? '1':'0.6');
-    };
-    qsa('[data-i18n]').forEach(el=>el.setAttribute('data-i18n-orig', el.textContent));
-    qsa('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>applyLang(btn.dataset.lang==='hu')));
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  // RO/HU dictionary – frissített változat
+  const dictHU = {
+    kicker: "Szatmárnémeti · Polgári, ipari és mezőgazdasági projektek",
+    title: "Műszaki ellenőrzés, értékbecslés és villamos kivitelezés – professzionálisan, gyorsan, dokumentáltan.",
+    lead: "Teljes körű tanácsadás a dokumentáció ellenőrzésétől az átvételig, ANEVAR értékbecslés (ingatlanok és ingóságok) és fotovoltaikus / villamos rendszerek (ANRE). Rugalmas időpontok, kiszállás a megyében.",
+    cta1: "Időpont egyeztetés",
+    cta2: "Írj WhatsApp-on",
+    cta3: "Szolgáltatások",
+
+    s1_title: "Műszaki ellenőrzés (dirigenție)",
+    s1_desc: "A kivitelezés nyomon követése, minőségellenőrzés, munkalapok, átvételi dokumentációk, a beruházó képviselete.",
+    s1_b1: "Polgári, ipari és mezőgazdasági munkák",
+    s1_b2: "Minőségellenőrzési terv, jegyzőkönyvek, vizsgálati lapok",
+    s1_b3: "Kapcsolattartás a tervezővel és kivitelezővel",
+
+    s2_title: "ANEVAR értékbecslések",
+    s2_desc: "Ingatlanok és ingóságok (gépek, berendezések) értékelése banki, számviteli vagy tranzakciós célokra.",
+    s2_b1: "Módszerek: piaci, hozamalapú, költségalapú",
+    s2_b2: "Fotódokumentáció, helyszíni szemle, teljes dosszié",
+    s2_b3: "Digitális átadás (hitelesített PDF)",
+
+    s3_title: "Villamos és fotovoltaikus rendszerek",
+    s3_desc: "Tanácsadás és ellenőrzés elosztótáblák, áramkörök, üzembe helyezés, PV méretezés és engedélyezési dokumentációk terén.",
+    s3_b1: "ANRE jogosultság szerinti tervezés / kivitelezés",
+    s3_b2: "Műszaki audit és megfelelőségi ellenőrzés",
+    s3_b3: "Energiafogyasztás-optimalizálás / prosumer megoldások",
+
+    cred_title: "Akkreditációk és kompetenciák",
+    cred_b1: "Műszaki ellenőr – C, I, A kategóriák",
+    cred_b2: "ANEVAR értékbecslő",
+    cred_b3: "ANRE villanyszerelő (IIA / IIB)",
+    cred_b4: "RSVTI felelős (Berendezések műszaki felügyelete)",
+    cred_p: "Igazolványok és engedélyek kérésre bemutathatók. A hatályos szabványok és előírások betartásával dolgozom.",
+
+    zone_title: "Szolgáltatási terület",
+    zone_desc: "Szatmárnémeti (város) és a megye települései. Gyors kiszállás, rugalmas időpont-egyeztetés.",
+    faq_title: "Gyakori kérdések",
+    q1: "Mennyi idő alatt kapok ajánlatot?",
+    a1: "Általában 24–48 órán belül, miután megkapom a szükséges adatokat (tervek, leírás, helyszín).",
+    q2: "Szombaton is dolgozik?",
+    a2: "Igen, helyszíni szemléket és megyei kiszállásokat szombaton is vállalok, egyeztetés alapján.",
+    q3: "Számlát állít ki?",
+    a3: "Igen. Fizetés banki átutalással vagy készpénzben, a hatályos jogszabályok szerint.",
+
+    contact_title: "Kapcsolat",
+    form_title: "Üzenet küldése",
+    send: "Küldés"
+  };
+
+  const qs = s => document.querySelector(s);
+  const qsa = s => [...document.querySelectorAll(s)];
+  const applyLang = (isHU = false) => {
+    qsa('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (isHU && dictHU[key]) el.textContent = dictHU[key];
+      if (!isHU && dictHU[key]) el.textContent = el.getAttribute('data-i18n-orig') || el.textContent;
+    });
+    qsa('[data-lang]').forEach(b => b.style.opacity = (b.dataset.lang === (isHU ? 'hu' : 'ro')) ? '1' : '0.6');
+  };
+  qsa('[data-i18n]').forEach(el => el.setAttribute('data-i18n-orig', el.textContent));
+  qsa('[data-lang]').forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang === 'hu')));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
